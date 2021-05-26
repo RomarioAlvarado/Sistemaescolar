@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Login </title>
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="login-button">
+  <img src="imagenes/login-w-icon.png">
+  </img>
+</div>
+<div id="container">
+  <h1>Inicio Sesión</h1>
+  <span class="close-btn">
+    <img src="imagenes/circle_close_delete_-128.png"></img>
+  </span>
+
+  <form method="POST" action="validacion.php">
+    <input type="text" name="txtusuario" placeholder="Ingrese Usuario">
+
+    <input type="password" name="txtpassword" placeholder="Password">
+    <center>
+    <div class="caja">
+    <select id="userType" name="userType" class="boton">
+    <option>Selecciona una opción</option>
+    <option value="Administrador">Admin</option>
+    <option value="Docente">Docente</option>
+    </select>
+    </div>
+    </center>
+     <input type="submit" name="" value="Ingresar">
+
+    <div id="remember-container">
+      <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
+      <span id="remember">Remember me</span>
+      
+    </div>
+</form>
+</div>
+
+<!-- partial -->
+  <script src='js/TweenMax.min.js'></script>
+<script src='js/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
