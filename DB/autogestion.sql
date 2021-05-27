@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2021 a las 03:46:29
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.2.33
+-- Host: 127.0.0.1
+-- Generation Time: May 27, 2021 at 03:43 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `autogestion`
+-- Database: `autogestion2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `actividades`
+-- Table structure for table `actividades`
 --
 
 CREATE TABLE `actividades` (
@@ -39,7 +39,7 @@ CREATE TABLE `actividades` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `administracion`
+-- Table structure for table `administracion`
 --
 
 CREATE TABLE `administracion` (
@@ -49,10 +49,17 @@ CREATE TABLE `administracion` (
   `Id_Usuario` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `administracion`
+--
+
+INSERT INTO `administracion` (`Id_Administrador`, `Nombre`, `Apellido`, `Id_Usuario`) VALUES
+(1, 'Tattiana', 'Pineda', 1);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumdiscs`
+-- Table structure for table `alumdiscs`
 --
 
 CREATE TABLE `alumdiscs` (
@@ -64,7 +71,7 @@ CREATE TABLE `alumdiscs` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumgetnicos`
+-- Table structure for table `alumgetnicos`
 --
 
 CREATE TABLE `alumgetnicos` (
@@ -76,7 +83,7 @@ CREATE TABLE `alumgetnicos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumnos`
+-- Table structure for table `alumnos`
 --
 
 CREATE TABLE `alumnos` (
@@ -87,13 +94,14 @@ CREATE TABLE `alumnos` (
   `Segundo_Apellido` varchar(25) NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
   `Direcccion` varchar(50) NOT NULL,
-  `Id_Grado` int(10) NOT NULL
+  `Id_Grado` int(10) NOT NULL,
+  `Id_Encargado` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `asistencias`
+-- Table structure for table `asistencias`
 --
 
 CREATE TABLE `asistencias` (
@@ -106,7 +114,7 @@ CREATE TABLE `asistencias` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `calificaciones`
+-- Table structure for table `calificaciones`
 --
 
 CREATE TABLE `calificaciones` (
@@ -122,7 +130,7 @@ CREATE TABLE `calificaciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `discapacidades`
+-- Table structure for table `discapacidades`
 --
 
 CREATE TABLE `discapacidades` (
@@ -134,7 +142,7 @@ CREATE TABLE `discapacidades` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `docentes`
+-- Table structure for table `docentes`
 --
 
 CREATE TABLE `docentes` (
@@ -143,7 +151,7 @@ CREATE TABLE `docentes` (
   `Segundo_Nombre` varchar(25) NOT NULL,
   `Primer_Apellido` varchar(25) NOT NULL,
   `Segundo_Apellido` varchar(25) NOT NULL,
-  `DPI` int(13) NOT NULL,
+  `DPI` varchar(25) NOT NULL,
   `Direcccion` varchar(50) NOT NULL,
   `Telefono` int(8) NOT NULL,
   `Email` varchar(50) NOT NULL,
@@ -151,10 +159,17 @@ CREATE TABLE `docentes` (
   `Id_Usuario` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `docentes`
+--
+
+INSERT INTO `docentes` (`Id_Docente`, `Primer_Nombre`, `Segundo_Nombre`, `Primer_Apellido`, `Segundo_Apellido`, `DPI`, `Direcccion`, `Telefono`, `Email`, `Fecha_Nac`, `Id_Usuario`) VALUES
+(1, 'Alba', 'Beatriz', 'None', 'Name', '2514163320501', 'Escuintla, Cascada', 78892565, 'alba@gmail.com', '1985-03-11', 2);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `encargados`
+-- Table structure for table `encargados`
 --
 
 CREATE TABLE `encargados` (
@@ -169,10 +184,22 @@ CREATE TABLE `encargados` (
   `Parentesco` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `encargados`
+--
+
+INSERT INTO `encargados` (`Id_Encargado`, `Primer_Nombre`, `Segundo_Nombre`, `Primer_Apellido`, `Segundo_Apellido`, `Fecha_Nacimiento`, `Direcccion`, `Telefono`, `Parentesco`) VALUES
+(1, 'Roman', 'Romario', 'Alvarado', 'Morales', '1995-01-25', 'Manzana w lote 4 sector 3 la cascada 3 zona 3 de e', 30462435, 'Papa'),
+(2, 'Jennifer', 'Tattiana', 'Pineda', 'Barrera', '1991-12-18', 'Escuintla, Guatemala', 59748246, 'Madre'),
+(3, 'Roman', 'Romario', 'Alvarado', 'Morales', '1995-01-25', 'Manzana w sector 3 colonia la cascada 3 zona 3 de ', 30462435, 'Papa'),
+(7, 'Luis', 'Alberto', 'Velasquez', 'Lopez', '2021-05-19', 'San, Lucas', 78654935, 'Nada'),
+(8, 'Prueba 2', 'Prueba 2', 'Prueba 2', 'Prueba 2', '2021-05-06', 'Guatemala', 89674835, 'Nada'),
+(9, 'prueba 3', 'prueba 3', 'prueba 3', 'prueba 3', '2021-05-20', 'Guatemala', 784685279, 'Nada');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `establecimiento`
+-- Table structure for table `establecimiento`
 --
 
 CREATE TABLE `establecimiento` (
@@ -185,7 +212,7 @@ CREATE TABLE `establecimiento` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `fichasalumnos`
+-- Table structure for table `fichasalumnos`
 --
 
 CREATE TABLE `fichasalumnos` (
@@ -203,7 +230,7 @@ CREATE TABLE `fichasalumnos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `grados`
+-- Table structure for table `grados`
 --
 
 CREATE TABLE `grados` (
@@ -216,7 +243,7 @@ CREATE TABLE `grados` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `gruposetnicos`
+-- Table structure for table `gruposetnicos`
 --
 
 CREATE TABLE `gruposetnicos` (
@@ -227,10 +254,10 @@ CREATE TABLE `gruposetnicos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `incripciones`
+-- Table structure for table `inscripciones`
 --
 
-CREATE TABLE `incripciones` (
+CREATE TABLE `inscripciones` (
   `Id_Inscripcion` int(10) NOT NULL,
   `Id_Alumno` int(10) NOT NULL,
   `Id_Grado` int(10) NOT NULL,
@@ -240,7 +267,7 @@ CREATE TABLE `incripciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materias`
+-- Table structure for table `materias`
 --
 
 CREATE TABLE `materias` (
@@ -251,19 +278,26 @@ CREATE TABLE `materias` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
   `Id_Rol` int(10) NOT NULL,
-  `Perfil` varchar(25) NOT NULL,
-  `Estado` varchar(25) NOT NULL
+  `Perfil` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`Id_Rol`, `Perfil`) VALUES
+(1, 'Administrador'),
+(2, 'Docente');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `secciones`
+-- Table structure for table `secciones`
 --
 
 CREATE TABLE `secciones` (
@@ -274,36 +308,46 @@ CREATE TABLE `secciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
   `Id_Usuario` int(10) NOT NULL,
-  `Nombre` varchar(25) NOT NULL,
+  `Usuario` varchar(25) NOT NULL,
   `Password` varchar(25) NOT NULL,
+  `Estado` int(1) NOT NULL,
   `Id_Rol` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tablas volcadas
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`Id_Usuario`, `Usuario`, `Password`, `Estado`, `Id_Rol`) VALUES
+(1, 'Tatthu', '181291', 1, 1),
+(2, 'Alba', '12345', 1, 2),
+(3, 'romario', '123', 1, 1);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `actividades`
+-- Indexes for table `actividades`
 --
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`Id_Actividad`),
   ADD KEY `Id_Docente` (`Id_Docente`);
 
 --
--- Indices de la tabla `administracion`
+-- Indexes for table `administracion`
 --
 ALTER TABLE `administracion`
   ADD PRIMARY KEY (`Id_Administrador`),
   ADD KEY `Id_Usuario` (`Id_Usuario`);
 
 --
--- Indices de la tabla `alumdiscs`
+-- Indexes for table `alumdiscs`
 --
 ALTER TABLE `alumdiscs`
   ADD PRIMARY KEY (`Id_AlumDisc`),
@@ -311,7 +355,7 @@ ALTER TABLE `alumdiscs`
   ADD KEY `Id_Discapacidad` (`Id_Discapacidad`);
 
 --
--- Indices de la tabla `alumgetnicos`
+-- Indexes for table `alumgetnicos`
 --
 ALTER TABLE `alumgetnicos`
   ADD PRIMARY KEY (`Id_AEtnico`),
@@ -319,21 +363,22 @@ ALTER TABLE `alumgetnicos`
   ADD KEY `Id_gEtnico` (`Id_gEtnico`);
 
 --
--- Indices de la tabla `alumnos`
+-- Indexes for table `alumnos`
 --
 ALTER TABLE `alumnos`
   ADD PRIMARY KEY (`Id_Alumno`),
-  ADD KEY `Id_Grado` (`Id_Grado`);
+  ADD KEY `Id_Grado` (`Id_Grado`),
+  ADD KEY `Id_Encargado` (`Id_Encargado`);
 
 --
--- Indices de la tabla `asistencias`
+-- Indexes for table `asistencias`
 --
 ALTER TABLE `asistencias`
   ADD PRIMARY KEY (`Id_Asistencia`),
   ADD KEY `Id_Alumno` (`Id_Alumno`);
 
 --
--- Indices de la tabla `calificaciones`
+-- Indexes for table `calificaciones`
 --
 ALTER TABLE `calificaciones`
   ADD PRIMARY KEY (`Id_Calificacion`),
@@ -341,32 +386,32 @@ ALTER TABLE `calificaciones`
   ADD KEY `Id_Materia` (`Id_Materia`);
 
 --
--- Indices de la tabla `discapacidades`
+-- Indexes for table `discapacidades`
 --
 ALTER TABLE `discapacidades`
   ADD PRIMARY KEY (`Id_Discapacidad`);
 
 --
--- Indices de la tabla `docentes`
+-- Indexes for table `docentes`
 --
 ALTER TABLE `docentes`
   ADD PRIMARY KEY (`Id_Docente`),
   ADD KEY `Id_Usuario` (`Id_Usuario`);
 
 --
--- Indices de la tabla `encargados`
+-- Indexes for table `encargados`
 --
 ALTER TABLE `encargados`
   ADD PRIMARY KEY (`Id_Encargado`);
 
 --
--- Indices de la tabla `establecimiento`
+-- Indexes for table `establecimiento`
 --
 ALTER TABLE `establecimiento`
   ADD PRIMARY KEY (`Id_Establicimeinto`);
 
 --
--- Indices de la tabla `fichasalumnos`
+-- Indexes for table `fichasalumnos`
 --
 ALTER TABLE `fichasalumnos`
   ADD PRIMARY KEY (`Id_FichaAlumno`),
@@ -378,7 +423,7 @@ ALTER TABLE `fichasalumnos`
   ADD KEY `Id_AEtnico` (`Id_AEtnico`);
 
 --
--- Indices de la tabla `grados`
+-- Indexes for table `grados`
 --
 ALTER TABLE `grados`
   ADD PRIMARY KEY (`Id_Grado`),
@@ -386,219 +431,220 @@ ALTER TABLE `grados`
   ADD KEY `Id_Docente` (`Id_Docente`);
 
 --
--- Indices de la tabla `gruposetnicos`
+-- Indexes for table `gruposetnicos`
 --
 ALTER TABLE `gruposetnicos`
   ADD PRIMARY KEY (`Id_gEtnico`);
 
 --
--- Indices de la tabla `incripciones`
+-- Indexes for table `inscripciones`
 --
-ALTER TABLE `incripciones`
+ALTER TABLE `inscripciones`
   ADD PRIMARY KEY (`Id_Inscripcion`),
   ADD KEY `Id_Alumno` (`Id_Alumno`,`Id_Grado`),
   ADD KEY `Id_Grado` (`Id_Grado`);
 
 --
--- Indices de la tabla `materias`
+-- Indexes for table `materias`
 --
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`Id_Materia`);
 
 --
--- Indices de la tabla `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`Id_Rol`);
 
 --
--- Indices de la tabla `secciones`
+-- Indexes for table `secciones`
 --
 ALTER TABLE `secciones`
   ADD PRIMARY KEY (`Id_Seccion`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`Id_Usuario`),
   ADD KEY `Id_Rol` (`Id_Rol`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `actividades`
+-- AUTO_INCREMENT for table `actividades`
 --
 ALTER TABLE `actividades`
   MODIFY `Id_Actividad` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `administracion`
+-- AUTO_INCREMENT for table `administracion`
 --
 ALTER TABLE `administracion`
-  MODIFY `Id_Administrador` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Administrador` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `alumdiscs`
+-- AUTO_INCREMENT for table `alumdiscs`
 --
 ALTER TABLE `alumdiscs`
   MODIFY `Id_AlumDisc` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `alumgetnicos`
+-- AUTO_INCREMENT for table `alumgetnicos`
 --
 ALTER TABLE `alumgetnicos`
   MODIFY `Id_AEtnico` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `alumnos`
+-- AUTO_INCREMENT for table `alumnos`
 --
 ALTER TABLE `alumnos`
   MODIFY `Id_Alumno` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `asistencias`
+-- AUTO_INCREMENT for table `asistencias`
 --
 ALTER TABLE `asistencias`
   MODIFY `Id_Asistencia` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `calificaciones`
+-- AUTO_INCREMENT for table `calificaciones`
 --
 ALTER TABLE `calificaciones`
   MODIFY `Id_Calificacion` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `discapacidades`
+-- AUTO_INCREMENT for table `discapacidades`
 --
 ALTER TABLE `discapacidades`
   MODIFY `Id_Discapacidad` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `docentes`
+-- AUTO_INCREMENT for table `docentes`
 --
 ALTER TABLE `docentes`
-  MODIFY `Id_Docente` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Docente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `encargados`
+-- AUTO_INCREMENT for table `encargados`
 --
 ALTER TABLE `encargados`
-  MODIFY `Id_Encargado` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Encargado` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT de la tabla `establecimiento`
+-- AUTO_INCREMENT for table `establecimiento`
 --
 ALTER TABLE `establecimiento`
   MODIFY `Id_Establicimeinto` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `fichasalumnos`
+-- AUTO_INCREMENT for table `fichasalumnos`
 --
 ALTER TABLE `fichasalumnos`
   MODIFY `Id_FichaAlumno` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `grados`
+-- AUTO_INCREMENT for table `grados`
 --
 ALTER TABLE `grados`
   MODIFY `Id_Grado` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `gruposetnicos`
+-- AUTO_INCREMENT for table `gruposetnicos`
 --
 ALTER TABLE `gruposetnicos`
   MODIFY `Id_gEtnico` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `incripciones`
+-- AUTO_INCREMENT for table `inscripciones`
 --
-ALTER TABLE `incripciones`
+ALTER TABLE `inscripciones`
   MODIFY `Id_Inscripcion` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `materias`
+-- AUTO_INCREMENT for table `materias`
 --
 ALTER TABLE `materias`
   MODIFY `Id_Materia` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `Id_Rol` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `secciones`
+-- AUTO_INCREMENT for table `secciones`
 --
 ALTER TABLE `secciones`
   MODIFY `Id_Seccion` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id_Usuario` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `actividades`
+-- Constraints for table `actividades`
 --
 ALTER TABLE `actividades`
   ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`Id_Docente`) REFERENCES `docentes` (`Id_Docente`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `administracion`
+-- Constraints for table `administracion`
 --
 ALTER TABLE `administracion`
   ADD CONSTRAINT `administracion_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `usuarios` (`Id_Usuario`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `alumdiscs`
+-- Constraints for table `alumdiscs`
 --
 ALTER TABLE `alumdiscs`
   ADD CONSTRAINT `alumdiscs_ibfk_1` FOREIGN KEY (`Id_Alumno`) REFERENCES `alumnos` (`Id_Alumno`) ON DELETE CASCADE,
   ADD CONSTRAINT `alumdiscs_ibfk_2` FOREIGN KEY (`Id_Discapacidad`) REFERENCES `discapacidades` (`Id_Discapacidad`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `alumgetnicos`
+-- Constraints for table `alumgetnicos`
 --
 ALTER TABLE `alumgetnicos`
   ADD CONSTRAINT `alumgetnicos_ibfk_1` FOREIGN KEY (`Id_Alumno`) REFERENCES `alumnos` (`Id_Alumno`) ON DELETE CASCADE,
   ADD CONSTRAINT `alumgetnicos_ibfk_2` FOREIGN KEY (`Id_gEtnico`) REFERENCES `gruposetnicos` (`Id_gEtnico`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `alumnos`
+-- Constraints for table `alumnos`
 --
 ALTER TABLE `alumnos`
-  ADD CONSTRAINT `alumnos_ibfk_1` FOREIGN KEY (`Id_Grado`) REFERENCES `grados` (`Id_Grado`) ON DELETE CASCADE;
+  ADD CONSTRAINT `alumnos_ibfk_1` FOREIGN KEY (`Id_Grado`) REFERENCES `grados` (`Id_Grado`) ON DELETE CASCADE,
+  ADD CONSTRAINT `alumnos_ibfk_2` FOREIGN KEY (`Id_Encargado`) REFERENCES `encargados` (`Id_Encargado`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `asistencias`
+-- Constraints for table `asistencias`
 --
 ALTER TABLE `asistencias`
   ADD CONSTRAINT `asistencias_ibfk_1` FOREIGN KEY (`Id_Alumno`) REFERENCES `alumnos` (`Id_Alumno`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `calificaciones`
+-- Constraints for table `calificaciones`
 --
 ALTER TABLE `calificaciones`
   ADD CONSTRAINT `calificaciones_ibfk_1` FOREIGN KEY (`Id_Materia`) REFERENCES `materias` (`Id_Materia`) ON DELETE CASCADE,
   ADD CONSTRAINT `calificaciones_ibfk_2` FOREIGN KEY (`Id_Alumno`) REFERENCES `alumnos` (`Id_Alumno`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `docentes`
+-- Constraints for table `docentes`
 --
 ALTER TABLE `docentes`
   ADD CONSTRAINT `docentes_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `usuarios` (`Id_Usuario`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `fichasalumnos`
+-- Constraints for table `fichasalumnos`
 --
 ALTER TABLE `fichasalumnos`
   ADD CONSTRAINT `fichasalumnos_ibfk_1` FOREIGN KEY (`Id_Alumno`) REFERENCES `alumnos` (`Id_Alumno`) ON DELETE CASCADE,
@@ -609,21 +655,21 @@ ALTER TABLE `fichasalumnos`
   ADD CONSTRAINT `fichasalumnos_ibfk_6` FOREIGN KEY (`Id_AEtnico`) REFERENCES `alumgetnicos` (`Id_AEtnico`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `grados`
+-- Constraints for table `grados`
 --
 ALTER TABLE `grados`
   ADD CONSTRAINT `grados_ibfk_1` FOREIGN KEY (`Id_Seccion`) REFERENCES `secciones` (`Id_Seccion`) ON DELETE CASCADE,
   ADD CONSTRAINT `grados_ibfk_2` FOREIGN KEY (`Id_Docente`) REFERENCES `docentes` (`Id_Docente`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `incripciones`
+-- Constraints for table `inscripciones`
 --
-ALTER TABLE `incripciones`
-  ADD CONSTRAINT `incripciones_ibfk_1` FOREIGN KEY (`Id_Grado`) REFERENCES `grados` (`Id_Grado`) ON DELETE CASCADE,
-  ADD CONSTRAINT `incripciones_ibfk_2` FOREIGN KEY (`Id_Alumno`) REFERENCES `alumnos` (`Id_Alumno`) ON DELETE CASCADE;
+ALTER TABLE `inscripciones`
+  ADD CONSTRAINT `inscripciones_ibfk_1` FOREIGN KEY (`Id_Grado`) REFERENCES `grados` (`Id_Grado`) ON DELETE CASCADE,
+  ADD CONSTRAINT `inscripciones_ibfk_2` FOREIGN KEY (`Id_Alumno`) REFERENCES `alumnos` (`Id_Alumno`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `usuarios`
+-- Constraints for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`Id_Rol`) REFERENCES `roles` (`Id_Rol`) ON DELETE CASCADE;
